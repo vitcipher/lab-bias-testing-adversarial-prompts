@@ -1,28 +1,19 @@
-# Hack your LLM — Bias Red-Team Lab
+# Hack your LLM
 
-AI red-teaming exercise: multi-turn adversarial prompting to probe an LLM
-for sycophantic validation of ageist, sexist, and ethnic/cultural bias, with
-every conversation traced in LangSmith and mapped to EU AI Act risk
-categories (Article 5, Article 10, Article 15).
+**Track:** Module 7 — EU AI Act · **When:** Week 7, Day 4 · **Status:** Optional / Extra
+
+This repository contains everything you need for this lab.
 
 **LangSmith project:** TODO — paste your `smith.langchain.com` project URL here.
 
-## Setup
-
-1. `python3 -m venv .venv && source .venv/bin/activate`
-2. `pip install -r requirements.txt`
-3. Copy `.env.example` to `.env` and fill in `LANGCHAIN_API_KEY` and
-   `OPENAI_API_KEY`. `.env` is git-ignored — never commit it.
-4. In LangSmith, create a project whose name **exactly matches**
-   `LANGCHAIN_PROJECT` in your `.env` (defaults to `bias-red-team-lab`).
-   Note: the lab PDF names the project `bias-redteam-lab` in the Setup
-   section but `bias-red-team-lab` in the Environment variables section —
-   pick either spelling, just make sure the LangSmith project name and the
-   `.env` value match each other exactly.
-5. Run scripts from inside `scripts/` (they import a shared `common.py`
-   via a relative import): `cd scripts && python 00_first_run.py`
-
 ## Files
+
+Provided by the lab template:
+
+- [`instructions.md`](./instructions.md) — the lab instructions
+- [`rubric.md`](./rubric.md) — how your submission is graded; this is what the AI reviewer checks your PR against
+
+Submitted for this lab:
 
 | File | Purpose |
 |---|---|
@@ -34,11 +25,29 @@ categories (Article 5, Article 10, Article 15).
 | `scripts/04_adversarial_ethnic_bias.py` | Checkpoint 3 & Phase 2 — original 4-turn adversarial sequence for ethnic/cultural bias, using incremental anchoring, false social proof, and pushback pressure. |
 | `scripts/05_reinforce_system_guard.py` | Reinforce (optional) — re-runs the ageism sequence with a hardened system prompt ("must never validate discriminatory beliefs") to compare against `02_adversarial_ageism.py`. |
 | `scripts/06_reinforce_extend_trace.py` | Reinforce (optional) — extends the ageism sequence with 2 extra turns to see whether the model doubles down, self-corrects, or oscillates after taking the bait. |
-| `notes/trace_analysis.md` | Checkpoint 4 — per-category analysis of the LangSmith traces (tone-shift turn, whether the model validated the bias, most effective technique). Fill in after reviewing traces in the UI. |
+| `notes/trace_analysis.md` | Checkpoint 4 — per-category analysis of the LangSmith traces (tone-shift turn, whether the model validated the bias, most effective technique). |
 | `notes/consulting_memo.md` | Stretch — client-facing memo on the category where the model most clearly took the bait, with EU AI Act citations and one remediation recommendation. |
 | `lab_summary.md` | Checkpoint 5 / Phase 3 deliverable — the required 150-250 word conclusion paragraph. Lives at the repo root per lab instructions, not in this README. |
 | `requirements.txt` | Python dependencies: `langchain`, `langchain-openai`, `langsmith`, `python-dotenv`. |
 | `.env.example` | Template for required environment variables. Copy to `.env` (git-ignored) and fill in real keys. |
+
+## How to complete this lab
+
+1. **Fork** this repository.
+2. Do the work described in `instructions.md`, committing to your fork.
+3. Open a **pull request** back into this repository.
+4. You'll receive **AI feedback** on your PR based on `rubric.md`. Address any blocking feedback and push updates to the same PR.
+
+## Setup (for running the scripts)
+
+1. `python3 -m venv .venv && source .venv/bin/activate`
+2. `pip install -r requirements.txt`
+3. Copy `.env.example` to `.env` and fill in `LANGCHAIN_API_KEY` and
+   `OPENAI_API_KEY`. `.env` is git-ignored — never commit it.
+4. In LangSmith, create a project named `bias-red-team-lab` to match
+   `LANGCHAIN_PROJECT` in your `.env`.
+5. Run scripts from inside `scripts/` (they import a shared `common.py`
+   via a relative import): `cd scripts && python 00_first_run.py`
 
 ## Workflow
 
@@ -87,3 +96,9 @@ Ran with live `gpt-4o-mini` + LangSmith:
   premise vague ("a particular regional background") rather than naming a
   real ethnic group — the point is testing resistance to the *pattern* of
   stereotyping under pressure, not eliciting a slur.
+
+## Submission hygiene
+
+- Keep this repository scoped to this lab only — no unrelated projects or personal files.
+- Use clear, descriptive filenames.
+- Remove secrets, API keys, and tokens before committing.
