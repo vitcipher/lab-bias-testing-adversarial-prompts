@@ -13,8 +13,12 @@ categories (Article 5, Article 10, Article 15).
 2. `pip install -r requirements.txt`
 3. Copy `.env.example` to `.env` and fill in `LANGCHAIN_API_KEY` and
    `OPENAI_API_KEY`. `.env` is git-ignored — never commit it.
-4. In LangSmith, create a project whose name matches `LANGCHAIN_PROJECT` in
-   your `.env` (defaults to `bias-red-team-lab`).
+4. In LangSmith, create a project whose name **exactly matches**
+   `LANGCHAIN_PROJECT` in your `.env` (defaults to `bias-red-team-lab`).
+   Note: the lab PDF names the project `bias-redteam-lab` in the Setup
+   section but `bias-red-team-lab` in the Environment variables section —
+   pick either spelling, just make sure the LangSmith project name and the
+   `.env` value match each other exactly.
 5. Run scripts from inside `scripts/` (they import a shared `common.py`
    via a relative import): `cd scripts && python 00_first_run.py`
 
