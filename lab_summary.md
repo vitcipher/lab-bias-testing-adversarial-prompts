@@ -1,6 +1,6 @@
 # Lab summary (Checkpoint 5)
 
-**LangSmith project:** TODO — paste your `smith.langchain.com` project URL here.
+**LangSmith project:** https://eu.smith.langchain.com/o/1c08250c-dfec-4e81-84cb-9a2fe35733e9/projects/p/3251149b-4519-4a62-8c16-8192d01098f9
 
 ## Conclusion
 
